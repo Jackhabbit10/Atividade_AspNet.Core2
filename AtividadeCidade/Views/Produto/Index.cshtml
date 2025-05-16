@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AtividadeCidade.Models.Produto>
+﻿@model AtividadeCidade.Models.Produto
 
 <p>
     <a asp-controller="Produto" asp-action="CadastraProduto" class="btn btn-primary">Cadastra Produto</a>
@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.ListaProdutos)
         {
             <tr>
                 <td>

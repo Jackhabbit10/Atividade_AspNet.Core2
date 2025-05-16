@@ -9,6 +9,6 @@ namespace AtividadeCidade.Models
         public decimal? preco_prod { get; set; }
         public int quantidade_prod { get; set; }
 
-        public List<Produto>? ListaProduto { get; set; }
+        public List<Produto>? ListaProdutos { get; set; }
     }
 }

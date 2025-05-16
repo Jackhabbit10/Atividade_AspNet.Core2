@@ -28,7 +28,7 @@ namespace AtividadeCidade.Controllers
             {
                 // Autenticação bem-sucedida
                 // Redireciona o usuário para a action "Index" do Controller "Cliente".
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Produto");
             }
 
             ModelState.AddModelError("", "Email ou senha inválidos.");
