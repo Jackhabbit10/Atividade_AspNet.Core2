@@ -15,20 +15,20 @@ namespace AtividadeCidade.Controllers
 
         public IActionResult Index()
         {
-            return View(_produtoRepositorio.TodosProdutos);
+            return View(_produtoRepositorio.TodosProdutos());
         }
 
-        //public IActionResult CadastrarProduto()
-        //{
-        //    return View();
-        //}
+        public IActionResult CadastrarProduto()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //public IActionResult CadastrarProduto(Produto produto)
-        //{
-        //    _produtoRepositorio.Cadastrar(produto);
-        //    return RedirectToAction(nameof(Index));
-        //}
+        [HttpPost]
+        public IActionResult CadastrarProduto(Produto produto)
+        {
+            _produtoRepositorio.Cadastrar(produto);
+            return RedirectToAction(nameof(Index));
+        }
 
         //public IActionResult EditarProduto(int id)
         //{

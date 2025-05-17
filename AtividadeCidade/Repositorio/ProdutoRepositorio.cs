@@ -11,8 +11,28 @@ namespace AtividadeCidade.Repositorio
 
         private readonly string _conexaoMySQL = configuration.GetConnectionString("conexaoMySQL");
 
+        public void Cadastrar(Produto produto)
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("insert into tb_produto values (null, @nome, @descricao, @preco, @quantidade)", conexao);
+             
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = produto.nome_prod;
 
-        public IEnumerable<Produto> TodosProdutos()
+                cmd.Parameters.Add("@descricao", MySqlDbType.VarChar).Value = produto.descricao_prod;
+
+                cmd.Parameters.Add("@preco", MySqlDbType.Decimal).Value = produto.preco_prod;
+
+                cmd.Parameters.Add("@quantidade", MySqlDbType.Int32).Value = produto.quantidade_prod;
+
+                cmd.ExecuteNonQuery();
+
+                conexao.Close();
+            }
+        }
+
+        public IEnumerable<Produto>TodosProdutos()
         {
             List<Produto> Produtolist = new List<Produto>();
 
