@@ -33,15 +33,15 @@ namespace AtividadeCidade.Controllers
         public IActionResult EditarProduto(int id)
         {
             var produto = _produtoRepositorio.ObterProduto(id);
-           if (produto == null)
-           {
-               return NotFound();
+            if (produto == null)
+            {
+                return NotFound();
             }
-           return View(produto);
+            return View(produto);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditarProduto(int id, [Bind("cod_prod, nome_prod, descricao_prod, preco_prod")] Produto produto)
+        public IActionResult EditarProduto(int id, [Bind("cod_prod, nome_prod, descricao_prod, preco_prod, quantidade_prod")] Produto produto)
         {
             if (id != produto.cod_prod)
             {
@@ -51,7 +51,7 @@ namespace AtividadeCidade.Controllers
             {
                 try
                 {
-                    if (_produtoRepositorio.Atualizar(produto))
+                    if (_produtoRepositorio.Editar(produto))
                     {
                         return RedirectToAction(nameof(Index));
                     }

@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model AtividadeCidade.Models.Produto;
+
+<h1>EditarProduto</h1>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditarProduto" method="post">
+            @*Esse token desempenha um papel crucial na prevenção de ataques de Cross-Site Request Forgery (CSRF).
+            Um ataque CSRF ocorre quando um site malicioso, um e-mail, um programa de mensagens 
+            instantâneas ou um programa induz um navegador da web de um usuário conectado a um aplicativo da web a executar uma 
+            ação indesejada naquele aplicativo. Isso pode acontecer sem o conhecimento ou consentimento do usuário.*@
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="cod_prod" class="form-control" />
+                <span asp-validation-for="cod_prod" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="nome_prod" class="control-label"></label>
+                <input  asp-for="nome_prod" class="form-control" />
+                <span asp-validation-for="nome_prod" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="descricao_prod" class="control-label"></label>
+                <input asp-for="descricao_prod" class="form-control" />
+                <span asp-validation-for="descricao_prod"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="preco_prod" class="control-label"></label>
+                <input asp-for="preco_prod" class="form-control" />
+                <span asp-validation-for="preco_prod" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="quantidade_prod" class="control-label"></label>
+                <input asp-for="quantidade_prod" class="form-control" />
+                <span asp-validation-for="quantidade_prod" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Alterar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
